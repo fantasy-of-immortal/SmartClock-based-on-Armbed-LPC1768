@@ -1,0 +1,93 @@
+﻿<Window x:Class="SmartClock.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="智能时钟 Version 0.5.1" Height="450" Width="800">
+
+    <!-- 设置窗口的左上角 Logo 图标 -->
+    <Window.Icon>
+        <BitmapImage UriSource="C:\Users\Administrator\Desktop\background\120158167_p1.jpg"/>
+    </Window.Icon>
+    
+    <!-- 设置窗口背景图片 -->
+    <Window.Background>
+        <ImageBrush ImageSource="C:\Users\Administrator\Desktop\background\74266h149p0.jpg" Stretch="UniformToFill"/>
+    </Window.Background>
+
+    <Grid Background="#F7F9FC" Margin="10" Opacity="0.8">
+        <!-- 定义三列布局 -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- 左侧区域：串口设置和温湿度显示 -->
+        <Border Background="#EDF2F7" Margin="10" Padding="10" BorderBrush="#C0C0C0" BorderThickness="1" Grid.Column="0">
+            <StackPanel>
+                <TextBlock Text="串口设置" FontWeight="Bold" FontSize="18" Margin="5" />
+                <ComboBox x:Name="portComboBox" Height="30" Margin="5" />
+                <Button Content="连接串口" x:Name="connectButton" Click="ConnectButton_Click" Height="30" Margin="5" />
+                <Separator Margin="10" />
+
+                <TextBlock Text="当前温湿度" FontWeight="Bold" FontSize="18" Margin="5" />
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <TextBlock Text="温度: " FontSize="16" />
+                    <TextBlock x:Name="temperatureTextBlock" Text="N/A" FontSize="16" FontWeight="Bold" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <TextBlock Text="湿度: " FontSize="16" />
+                    <TextBlock x:Name="humidityTextBlock" Text="N/A" FontSize="16" FontWeight="Bold" />
+                </StackPanel>
+                <Separator Margin="10" />
+
+                <TextBlock Text="当前时间" FontWeight="Bold" FontSize="18" Margin="5" />
+                <TextBlock x:Name="currentTimeTextBlock" Text="N/A" FontSize="16" FontWeight="Bold" Margin="5" />
+            </StackPanel>
+        </Border>
+
+        <!-- 右侧区域：闹钟设置和时钟同步 -->
+        <Border Background="#FFFFFF" Margin="10" Padding="10" BorderBrush="#C0C0C0" BorderThickness="1" Grid.Column="1">
+            <StackPanel>
+                <TextBlock Text="闹钟设置" FontWeight="Bold" FontSize="18" Margin="5" />
+                <TextBox x:Name="alarmTimeTextBox" Height="30" Width="200" Margin="5" Text="HH:mm"
+                         Foreground="Gray" GotFocus="AlarmTimeTextBox_GotFocus" LostFocus="AlarmTimeTextBox_LostFocus" />
+                <CheckBox x:Name="repeatCheckBox" Content="每天重复" Margin="5" />
+                <Button Content="设置闹钟" x:Name="setAlarmButton" Click="SetAlarmButton_Click" Height="30" Margin="5" />
+                <Separator Margin="10" />
+
+                <TextBlock Text="时钟同步" FontWeight="Bold" FontSize="18" Margin="5" />
+                <Button Content="校时" x:Name="syncTimeButton" Click="SyncTimeButton_Click" Height="30" Margin="5" />
+
+                <TextBlock Text="调试信息" FontWeight="Bold" FontSize="16" Margin="5"/>
+                <TextBox x:Name="DebugTextBox" Height="100" Margin="5" IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
+            </StackPanel>
+            
+        </Border>
+
+        <!-- 音乐播放器区域 -->
+        <Border Background="#F0F4F8" Margin="10" Padding="10" BorderBrush="#C0C0C0" BorderThickness="1" Grid.Column="2">
+            <StackPanel>
+                <TextBlock Text="音乐播放器" FontWeight="Bold" FontSize="18" Margin="5" />
+                <TextBlock x:Name="currentTrackTextBlock" Text="当前播放曲目：无" FontSize="16" FontWeight="Bold" Margin="5" />
+
+                <!-- 按钮布局 -->
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Content="上一首" Click="PrevButton_Click" Width="80" Margin="5"/>
+                        <Button Content="下一首" Click="NextButton_Click" Width="80" Margin="5"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
+                        <Button Content="播放" Click="PlayButton_Click" Width="80" Margin="5"/>
+                        <Button Content="暂停" Click="PauseButton_Click" Width="80" Margin="5"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                        <Button Content="音量增加" Click="VolumeUpButton_Click" Width="80" Margin="5"/>
+                        <Button Content="音量降低" Click="VolumeDownButton_Click" Width="80" Margin="5"/>
+                    </StackPanel>
+                </StackPanel>
+                
+                <Button Content="音乐库" Click="ShowLibraryButton_Click" Width="100" Margin="5" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

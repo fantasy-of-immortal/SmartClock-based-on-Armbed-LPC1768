@@ -1,0 +1,29 @@
+<Window x:Class="MusicPlayer.MusicLibraryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="音乐库" Height="400" Width="600">
+
+    <!-- 设置窗口背景图片 -->
+    <Window.Background>
+        <ImageBrush ImageSource="C:\Users\Administrator\Desktop\background\74266h149p0.jpg" Stretch="UniformToFill"/>
+    </Window.Background>
+    <Window.Icon>
+        <BitmapImage UriSource="C:\Users\Administrator\Desktop\background\120158167_p1.jpg"/>
+    </Window.Icon>
+
+    <Grid Background="#F7F9FC" Opacity="0.8">
+        <StackPanel Margin="20">
+            <TextBlock Text="音乐库" FontWeight="Bold" FontSize="24" HorizontalAlignment="Center" Margin="10" />
+
+            <!-- 音乐列表 -->
+            <ListBox x:Name="MusicListBox" FontSize="16" Margin="0,20,0,0" MouseDoubleClick="MusicListBox_MouseDoubleClick">
+                <!-- 歌曲项会在代码中动态加载 -->
+            </ListBox>
+
+            <!-- 按钮区 -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                <Button Content="关闭" Click="CloseButton_Click" Width="100" Margin="5"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
